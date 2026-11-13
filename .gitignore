@@ -1,0 +1,55 @@
+# Операционная система и проводник
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Редакторы и IDE
+.vscode/
+.idea/
+.history/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+.vim/
+
+# Локальные копии и временные файлы редакторов
+*.bak
+*.backup
+*.orig
+*.tmp
+*.temp
+
+# Логи
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Зависимости и сборка (на случай добавления инструментов)
+node_modules/
+dist/
+build/
+out/
+coverage/
+.cache/
+.parcel-cache/
+.vite/
+.sass-cache/
+
+# Переменные окружения и секреты
+.env
+.env.*
+!.env.example
+*.local
+
+# Артефакты тестов
+playwright-report/
+test-results/
