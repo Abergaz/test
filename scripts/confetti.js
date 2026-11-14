@@ -52,7 +52,10 @@
   const canvas = document.getElementById("confetti");
   const ctx = canvas.getContext("2d");
   const button = document.getElementById("spark");
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  /** Признак включённого режима уменьшенного движения. */
+  let reduceMotion = reduceMotionQuery.matches;
 
   /** @type {Particle[]} */
   let particles = [];
@@ -252,7 +255,18 @@
     spawnParticles(x, y, reduceMotion ? REDUCED_PARTICLE_COUNT : NORMAL_PARTICLE_COUNT);
   }
 
+  /**
+   * Подхватывает переключение системной настройки «уменьшить движение»,
+   * чтобы новые частицы сразу учитывали её без перезагрузки страницы.
+   * @param {MediaQueryListEvent} event Событие изменения настройки.
+   * @returns {void}
+   */
+  function handleMotionChange(event) {
+    reduceMotion = event.matches;
+  }
+
   button.addEventListener("click", handleClick);
   window.addEventListener("resize", resizeCanvas);
+  reduceMotionQuery.addEventListener("change", handleMotionChange);
   resizeCanvas();
 })();
